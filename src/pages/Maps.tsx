@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -13,9 +12,14 @@ import {
   DropdownMenuSeparator, 
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
+import EmergencyMap from '@/components/maps/EmergencyMap';
 
 const Maps = () => {
   const [activeTab, setActiveTab] = useState('map'); // 'map' or 'list'
+  const [showAssemblyPoints, setShowAssemblyPoints] = useState(true);
+  const [showHospitals, setShowHospitals] = useState(true);
+  const [showShelters, setShowShelters] = useState(true);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
   
   return (
     <div className="space-y-6">
@@ -38,12 +42,25 @@ const Maps = () => {
             <List className="h-4 w-4 mr-1" />
             Liste
           </Button>
-          <FilterButton />
+          <FilterButton 
+            showAssemblyPoints={showAssemblyPoints}
+            setShowAssemblyPoints={setShowAssemblyPoints}
+            showHospitals={showHospitals}
+            setShowHospitals={setShowHospitals}
+            showShelters={showShelters}
+            setShowShelters={setShowShelters}
+          />
         </div>
       </div>
       
       {activeTab === 'map' ? (
-        <MapView />
+        <MapView 
+          showAssemblyPoints={showAssemblyPoints}
+          showHospitals={showHospitals}
+          showShelters={showShelters}
+          isMapLoaded={isMapLoaded}
+          setIsMapLoaded={setIsMapLoaded}
+        />
       ) : (
         <ListView />
       )}
@@ -51,7 +68,23 @@ const Maps = () => {
   );
 };
 
-const FilterButton = () => (
+interface FilterButtonProps {
+  showAssemblyPoints: boolean;
+  setShowAssemblyPoints: (show: boolean) => void;
+  showHospitals: boolean;
+  setShowHospitals: (show: boolean) => void;
+  showShelters: boolean;
+  setShowShelters: (show: boolean) => void;
+}
+
+const FilterButton: React.FC<FilterButtonProps> = ({
+  showAssemblyPoints,
+  setShowAssemblyPoints,
+  showHospitals,
+  setShowHospitals,
+  showShelters,
+  setShowShelters
+}) => (
   <DropdownMenu>
     <DropdownMenuTrigger asChild>
       <Button variant="outline" size="sm">
@@ -62,9 +95,24 @@ const FilterButton = () => (
     <DropdownMenuContent>
       <DropdownMenuLabel>Gösterilecek Yerler</DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuCheckboxItem checked>Toplanma Alanları</DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem checked>Hastaneler</DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem checked>Sığınaklar</DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem 
+        checked={showAssemblyPoints}
+        onCheckedChange={setShowAssemblyPoints}
+      >
+        Toplanma Alanları
+      </DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem 
+        checked={showHospitals}
+        onCheckedChange={setShowHospitals}
+      >
+        Hastaneler
+      </DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem 
+        checked={showShelters}
+        onCheckedChange={setShowShelters}
+      >
+        Sığınaklar
+      </DropdownMenuCheckboxItem>
       <DropdownMenuSeparator />
       <DropdownMenuLabel>Rota Tercihleri</DropdownMenuLabel>
       <DropdownMenuSeparator />
@@ -74,31 +122,40 @@ const FilterButton = () => (
   </DropdownMenu>
 );
 
-const MapView = () => {
+interface MapViewProps {
+  showAssemblyPoints: boolean;
+  showHospitals: boolean;
+  showShelters: boolean;
+  isMapLoaded: boolean;
+  setIsMapLoaded: (loaded: boolean) => void;
+}
+
+const MapView: React.FC<MapViewProps> = ({ 
+  showAssemblyPoints, 
+  showHospitals, 
+  showShelters,
+  isMapLoaded,
+  setIsMapLoaded
+}) => {
   return (
     <Card className="border-none shadow-none">
       <CardContent className="p-0">
-        <div className="bg-emergency-light border rounded-lg p-4 flex items-center justify-center h-[70vh]">
-          <div className="text-center">
-            <div className="loading-spinner mx-auto mb-4"></div>
-            <p className="text-emergency-dark font-medium">Çevrimdışı haritalar yükleniyor...</p>
-            <p className="text-sm text-emergency-dark/70 mt-1">İstanbul bölgesi haritaları</p>
-            
-            <div className="flex items-center justify-center mt-4 space-x-4">
-              <div className="flex items-center">
-                <div className="w-3 h-3 rounded-full bg-emergency-success mr-2"></div>
-                <span className="text-xs">Toplanma Noktası</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-3 h-3 rounded-full bg-emergency-primary mr-2"></div>
-                <span className="text-xs">Hastane</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-3 h-3 rounded-full bg-emergency-secondary mr-2"></div>
-                <span className="text-xs">Sığınak</span>
+        <div className="bg-emergency-light border rounded-lg p-0 h-[70vh] relative">
+          {!isMapLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-emergency-light/90 z-10">
+              <div className="text-center">
+                <div className="loading-spinner mx-auto mb-4"></div>
+                <p className="text-emergency-dark font-medium">Çevrimdışı haritalar yükleniyor...</p>
+                <p className="text-sm text-emergency-dark/70 mt-1">İstanbul bölgesi haritaları</p>
               </div>
             </div>
-          </div>
+          )}
+          
+          <EmergencyMap 
+            showAssemblyPoints={showAssemblyPoints}
+            showHospitals={showHospitals}
+            showShelters={showShelters}
+          />
         </div>
       </CardContent>
       <CardFooter className="flex justify-between pt-4">

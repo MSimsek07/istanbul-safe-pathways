@@ -120,6 +120,28 @@
   width: 100%;
 }
 
+/* Mapbox custom styling */
+.mapboxgl-popup {
+  max-width: 300px;
+}
+
+.mapboxgl-popup-content {
+  padding: 12px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+.mapboxgl-popup-content strong {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.mapboxgl-popup-content p {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
 /* Pulse animation for emergency elements */
 .emergency-pulse {
   @apply animate-pulse-slow;
@@ -128,4 +150,21 @@
 /* Custom loading spinner */
 .loading-spinner {
   @apply w-8 h-8 rounded-full border-4 border-emergency-primary border-t-transparent animate-spin;
+}
+
+/* Marker animation */
+.marker {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
 }
