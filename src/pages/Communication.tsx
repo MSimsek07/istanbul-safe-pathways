@@ -310,11 +310,14 @@ const NearbyUsers = () => {
   return (
     <>
       <div className="flex items-center space-x-2 mb-4">
-        <Input 
-          placeholder="İsim ile ara..." 
-          className="flex-1" 
-          startIcon={<Search className="h-4 w-4" />}
-        />
+        {/* Fixed here: Changed from using startIcon prop to using a wrapping div with flexbox */}
+        <div className="relative w-full">
+          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-emergency-dark/40" />
+          <Input 
+            placeholder="İsim ile ara..." 
+            className="pl-9" 
+          />
+        </div>
       </div>
       
       <div className="border rounded-lg overflow-hidden">
