@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { 
-  Settings, Download, Accessibility, Languages, Database, 
+  Settings as SettingsIcon, Download, Accessibility, Languages, Database, 
   MapPin, Moon, Sun, Wifi, WifiOff, BatteryMedium, Share2
 } from 'lucide-react';
 import {
@@ -303,7 +303,7 @@ const Settings = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Settings className="h-5 w-5 mr-2" />
+              <SettingsIcon className="h-5 w-5 mr-2" />
               Uygulama Hakkında
             </CardTitle>
             <CardDescription>

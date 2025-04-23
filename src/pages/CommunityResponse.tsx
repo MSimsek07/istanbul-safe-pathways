@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -130,7 +129,7 @@ const TasksList = ({ searchQuery }) => {
     {
       id: 1,
       title: 'Su Dağıtımı - Kadıköy',
-      description: 'Kadıköy Meydanı'ndaki toplanma alanına 100 şişe su götürülmesi gerekiyor.',
+      description: "Kadıköy Meydanı'ndaki toplanma alanına 100 şişe su götürülmesi gerekiyor.",
       priority: 'high',
       status: 'pending',
       location: 'Kadıköy Meydanı',
@@ -194,7 +193,6 @@ const TasksList = ({ searchQuery }) => {
     }
   ];
   
-  // Filter tasks based on search query
   const filteredTasks = searchQuery
     ? tasks.filter(task => 
         task.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -352,7 +350,6 @@ const ResourcesList = ({ searchQuery }) => {
     }
   ];
   
-  // Filter resources based on search query
   const filteredResources = searchQuery
     ? resources.filter(resource => 
         resource.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -511,7 +508,6 @@ const TeamsList = ({ searchQuery }) => {
     }
   ];
   
-  // Filter teams based on search query
   const filteredTeams = searchQuery
     ? teams.filter(team => 
         team.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
