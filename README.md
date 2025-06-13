@@ -1,73 +1,97 @@
-# Welcome to your Lovable project
+# Istanbul Emergency Assistance Application
 
-## Project info
+A comprehensive mobile-first application designed for emergency preparedness and response in Istanbul. It provides crucial information, communication tools, and resource management features, accessible even in offline mode.
 
-**URL**: https://lovable.dev/projects/467d2956-7950-4c42-8235-f89efdc44ed5
+## Key Features
 
-## How can I edit this code?
+-   **Emergency Information Hub:** Access critical alerts, guidelines, and contact numbers for agencies like AFAD and İBB.
+-   **Offline First:** Core functionalities are designed to be accessible without an active internet connection, ensuring reliability during infrastructure outages.
+-   **Interactive Maps:** View designated safe zones, emergency assembly points, and locations of critical facilities.
+-   **Mesh Network Communication:** Enables peer-to-peer or group messaging through alternative networks when conventional communication channels are unavailable.
+-   **Community Response Coordination:** Tools to help organize local efforts, track tasks, and manage shared resources during an emergency.
+-   **Real-time Updates:** Displays the latest advisories and news (fetched when connection is available or via semi-offline channels) relevant to the ongoing situation.
+-   **Quick Access Interface:** A clean, intuitive UI with quick access to all essential modules like Maps, Communication, Emergency Info, and Community Help.
+-   **Battery Status Monitoring:** Provides information about the device's battery level, crucial during power outages. (Saw `BatteryStatus.tsx`)
+-   **Network Status Indicator:** Shows current network connectivity status. (Saw `NetworkStatus.tsx`)
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/467d2956-7950-4c42-8235-f89efdc44ed5) and start prompting.
+### Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+-   Node.js (v18 or later recommended)
+-   npm (comes with Node.js) or bun
 
-**Use your preferred IDE**
+### Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/your-repository-name.git
+    cd your-repository-name
+    ```
+    *(TODO: Replace with actual repository URL if available, otherwise use a placeholder)*
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2.  **Install dependencies:**
+    Using npm:
+    ```bash
+    npm install
+    ```
+    Or using bun:
+    ```bash
+    bun install
+    ```
 
-Follow these steps:
+3.  **Run the development server:**
+    Using npm:
+    ```bash
+    npm run dev
+    ```
+    Or using bun:
+    ```bash
+    bun run dev
+    ```
+    This will typically start the application on `http://localhost:5173` (for Vite) or another port specified in the output.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Technologies Used
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+This project is built with a modern web development stack:
 
-# Step 3: Install the necessary dependencies.
-npm i
+-   **Frontend Framework:** React
+-   **Build Tool:** Vite
+-   **Language:** TypeScript
+-   **Styling:** Tailwind CSS
+-   **UI Components:** Shadcn/UI
+-   **Mapping:** Mapbox GL JS (for interactive maps)
+-   **Routing:** React Router DOM
+-   **Data Fetching/State Management:** TanStack Query (React Query)
+-   **Package Managers (Choice of):** npm, bun
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## Contributing
 
-**Edit a file directly in GitHub**
+Contributions are welcome and greatly appreciated! If you have suggestions for improving the application, please feel free to fork the repository and submit a pull request.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+To contribute:
 
-**Use GitHub Codespaces**
+1.  **Fork the Project:** Click the 'Fork' button at the top right of this page.
+2.  **Create your Feature Branch:**
+    ```bash
+    git checkout -b feature/AmazingFeature
+    ```
+3.  **Commit your Changes:**
+    ```bash
+    git commit -m 'Add some AmazingFeature'
+    ```
+4.  **Push to the Branch:**
+    ```bash
+    git push origin feature/AmazingFeature
+    ```
+5.  **Open a Pull Request:** Navigate to the original repository and open a pull request from your forked branch.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Please try to follow the existing coding style and add comments where necessary. If you plan to make significant changes, it's a good idea to open an issue first to discuss your ideas.
 
-## What technologies are used for this project?
+## License
 
-This project is built with:
+This project is currently pending a license. Please check back later for updates on licensing information.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/467d2956-7950-4c42-8235-f89efdc44ed5) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+*(TODO: Add a `LICENSE` file to the repository (e.g., MIT, Apache 2.0) and update this section accordingly.)*
